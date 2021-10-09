@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - localgov_examples
+third_party_settings: {  }
+name: Example
+type: localgov_example
+description: 'Example node content type bundle for LocalGov Examples.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

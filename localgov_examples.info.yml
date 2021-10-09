@@ -1,0 +1,8 @@
+name: LocalGov Examples
+description: Examples and documentation of APIs, patterns and practise in LocalGov Drupal.
+package: LocalGov Drupal
+type: module
+core_version_requirement: ^9
+
+dependencies:
+  - localgov_core:localgov_core
