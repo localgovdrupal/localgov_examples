@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: localgov_example
+label: 'Example page'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  83d4b523-b537-4ef7-b3b5-c706eb427d03:
+    id: node_type
+    bundles:
+      localgov_example: localgov_example
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 83d4b523-b537-4ef7-b3b5-c706eb427d03
+selection_logic: and
+weight: 0
+relationships: {  }

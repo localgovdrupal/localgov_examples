@@ -17,8 +17,13 @@ function localgov_examples_modules_installed($modules) {
   // heard dependency.
   $services = in_array('localgov_services_navigation', $modules);
   if ($services) {
+    // By calling optional configuration again the services entity reference
+    // field is added. Pauthauto is also a dependency of Services so if that was
+    // not yet enabled the pathauto pattern will also be added - this is
+    // required for displaying the hierarchy.
     \Drupal::service('config.installer')->installOptionalConfig();
-    localgov_directories_optional_fields_settings($services);
+    // Once the field is in place the form display settings are configured.
+    localgov_examples_optional_fields_settings($services);
   }
 }
 

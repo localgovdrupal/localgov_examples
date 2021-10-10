@@ -1,0 +1,14 @@
+{
+    "name": "localgovdrupal/localgov_examples",
+    "description": "LocalGovDrupal distribution: Examples.",
+    "type": "drupal-module",
+    "homepage": "https://github.com/localgovdrupal/localgov_examples",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+    },
+    "require-dev": {
+        "localgovdrupal/localgov_core": "^2.1",
+        "localgovdrupal/localgov_services": "^2.0"
+    }
+}
