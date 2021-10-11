@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Provides a directory facets entity type.
+ * Hooks for adding and configuring opting into LocalGov Services.
  */
 
 use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
@@ -10,7 +10,7 @@ use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
 /**
  * Implements hook_modules_installed().
  */
-function localgov_examples_modules_installed($modules) {
+function localgov_examples_services_modules_installed($modules) {
   // This is the equivalent of localgov_examples_install() for when this module
   // is installed first and LocalGov Services later. It will also add the
   // additional fields needed for modules to work together without creating a
@@ -23,7 +23,7 @@ function localgov_examples_modules_installed($modules) {
     // required for displaying the hierarchy.
     \Drupal::service('config.installer')->installOptionalConfig();
     // Once the field is in place the form display settings are configured.
-    localgov_examples_optional_fields_settings($services);
+    localgov_examples_services_optional_fields_settings($services);
   }
 }
 
@@ -33,10 +33,10 @@ function localgov_examples_modules_installed($modules) {
  * @param bool $services
  *   If localgov_services is (being) installed.
  *
- * @see localgov_examples_install()
- * @see localgov_examples_modules_installed()
+ * @see localgov_examples_services_install()
+ * @see localgov_examples_services_modules_installed()
  */
-function localgov_examples_optional_fields_settings($services) {
+function localgov_examples_services_optional_fields_settings($services) {
   $properties = [
     'targetEntityType' => 'node',
     'bundle' => 'localgov_example',

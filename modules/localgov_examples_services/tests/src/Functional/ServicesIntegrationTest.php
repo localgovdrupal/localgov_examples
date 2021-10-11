@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\localgov_examples\Functional;
+namespace Drupal\Tests\localgov_examples_services\Functional;
 
 use Drupal\node\NodeInterface;
 use Drupal\Tests\BrowserTestBase;
@@ -39,16 +39,20 @@ class ServicesIntegrationTest extends BrowserTestBase {
   protected $nodeStorage;
 
   /**
+   * Module installer.
+   *
+   * @var \Drupal\Core\Extension\ModuleInstallerInterface
+   */
+  protected $moduleInstaller;
+
+  /**
    * Modules to enable.
    *
    * @var array
    */
   protected static $modules = [
     'localgov_core',
-    'localgov_services_landing',
-    'localgov_services_sublanding',
-    'localgov_services_navigation',
-    'localgov_examples',
+    'localgov_examples_base',
   ];
 
   /**
@@ -62,12 +66,45 @@ class ServicesIntegrationTest extends BrowserTestBase {
       'administer nodes',
     ]);
     $this->nodeStorage = $this->container->get('entity_type.manager')->getStorage('node');
+    $this->moduleInstaller = $this->container->get('module_installer');
   }
 
   /**
-   * Post overview into a service.
+   * Check services integration when services module enabled first.
    */
-  public function testServicesIntegration() {
+  public function testServicesIntegrationBefore() {
+    $this->moduleInstaller->install([
+      'localgov_services_landing',
+      'localgov_services_sublanding',
+      'localgov_services_navigation',
+    ]);
+    $this->moduleInstaller->install([
+      'localgov_examples_services',
+    ]);
+
+    $this->checkServiceField();
+  }
+
+  /**
+   * Check services integration when services module enabled after.
+   */
+  public function testServicesIntegrationAfter() {
+    $this->moduleInstaller->install([
+      'localgov_examples_services',
+    ]);
+    $this->moduleInstaller->install([
+      'localgov_services_landing',
+      'localgov_services_sublanding',
+      'localgov_services_navigation',
+    ]);
+
+    $this->checkServiceField();
+  }
+
+  /**
+   * Tests to confirm services field added to content type, and working.
+   */
+  private function checkServiceField() {
     $landing = $this->createNode([
       'title' => 'Landing Page 1',
       'type' => 'localgov_services_landing',

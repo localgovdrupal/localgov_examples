@@ -3,7 +3,7 @@ status: true
 dependencies:
   enforced:
     module:
-      - localgov_examples
+      - localgov_examples_base
 third_party_settings: {  }
 name: Example
 type: localgov_example

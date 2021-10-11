@@ -1,0 +1,14 @@
+name: 'LocalGov Examples: Services integration'
+description: Optional opt-in to LocalGov Services without dependencies.
+package: LocalGov Drupal
+type: module
+core_version_requirement: ^9
+
+dependencies:
+  - localgov_examples:localgov_examples_base
+
+test_dependencies:
+  - localgov_core:localgov_core
+  - localgov_services:localgov_services_landing
+  - localgov_services:localgov_services_sublanding
+  - localgov_services:localgov_services_navigation

@@ -1,0 +1,5 @@
+name: 'LocalGov Examples: Base'
+description: Basic content type, fields and updates. 
+package: LocalGov Drupal
+type: module
+core_version_requirement: ^9

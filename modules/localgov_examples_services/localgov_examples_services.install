@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Installation check for Services.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_examples_services_install() {
+  // Install additional fields related to other modules in LGD.
+  //
+  // A module can be installed seperately from LGD so there is no hard
+  // dependency on Services module. However, if it is installed then add the
+  // entity reference fields to allow content of this module to be included in
+  // services.
+  $services = \Drupal::moduleHandler()->moduleExists('localgov_services_navigation');
+  if ($services) {
+    localgov_examples_services_optional_fields_settings($services);
+  }
+}
