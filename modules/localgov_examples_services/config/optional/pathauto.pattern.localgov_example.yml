@@ -9,7 +9,7 @@ type: 'canonical_entities:node'
 pattern: '[node:title]'
 selection_criteria:
   83d4b523-b537-4ef7-b3b5-c706eb427d03:
-    id: node_type
+    id: 'entity_bundle:node'
     bundles:
       localgov_example: localgov_example
     negate: false

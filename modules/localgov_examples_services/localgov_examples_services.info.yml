@@ -2,7 +2,7 @@ name: 'LocalGov Examples: Services integration'
 description: Optional opt-in to LocalGov Services without dependencies.
 package: LocalGov Drupal
 type: module
-core_version_requirement: ^9
+core_version_requirement: ^10
 
 dependencies:
   - localgov_examples:localgov_examples_base

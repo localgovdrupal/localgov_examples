@@ -18,11 +18,14 @@ class ServicesIntegrationTest extends BrowserTestBase {
   use AssertBreadcrumbTrait;
 
   /**
-   * Test breadcrumbs in the Standard profile.
-   *
-   * @var string
+   * {@inheritdoc}
    */
-  protected $profile = 'standard';
+  protected $profile = 'testing';
+
+  /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'stark';
 
   /**
    * A user with permission to bypass content access checks.
@@ -60,7 +63,7 @@ class ServicesIntegrationTest extends BrowserTestBase {
    */
   protected function setUp(): void {
     parent::setUp();
-
+    $this->drupalPlaceBlock('system_breadcrumb_block');
     $this->adminUser = $this->drupalCreateUser([
       'bypass node access',
       'administer nodes',

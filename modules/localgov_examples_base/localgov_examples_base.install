@@ -5,49 +5,9 @@
  * Install, update and uninstall examples.
  */
 
-use Symfony\Component\Yaml\Yaml;
-
 /**
- * Adding new configuration.
+ * Implements hook_update_last_removed().
  */
-function localgov_examples_base_update_8001() {
-  // Rather than reading configuration that might from file storage in an
-  // update make a copy at this point in time. Otherwise later changes to
-  // the config/install will cause this update to operate differently
-  // depending on when it is run. State should be consistent after this
-  // update and before potentially another.
-  $core_entity_view_mode_node_localgov_example_yml = <<<EOY
-langcode: en
-status: true
-dependencies:
-  module:
-    - node
-id: node.localgov_example
-label: Example
-targetEntityType: node
-cache: true
-EOY;
-
-  // Get the correct storage, not the config entity directly.
-  $storage = \Drupal::service('entity_type.manager')->getStorage('entity_view_mode');
-  $configuration_array = Yaml::parse($core_entity_view_mode_node_localgov_example_yml);
-  // Use the ::createFromStorageRecord() method in preference to ::create().
-  $new_configuration = $storage->createFromStorageRecord($configuration_array);
-  $storage->save($new_configuration);
-}
-
-/**
- * Updating configuration.
- */
-function localgov_examples_base_update_8002() {
-  // Get the correct storage, not the config entity directly.
-  $storage = \Drupal::service('entity_type.manager')->getStorage('entity_view_mode');
-  $existing_configuration = $storage->load('node.localgov_example');
-  // Make a decision based on the current configuration, and if it has been
-  // changed by the user, if you should update the field or not.
-  $label_key = $existing_configuration->getEntityType()->getKey('label');
-  if ($existing_configuration->get($label_key) == 'Example') {
-    $existing_configuration->set($label_key, 'Example view mode');
-    $existing_configuration->save();
-  }
+function localgov_examples_update_last_removed() {
+  return 8002;
 }
