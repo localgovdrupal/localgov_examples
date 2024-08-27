@@ -61,5 +61,4 @@ class ContentTypeTest extends BrowserTestBase {
     $form->pressButton('edit-submit');
   }
 
-
 }

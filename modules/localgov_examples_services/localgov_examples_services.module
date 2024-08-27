@@ -15,7 +15,7 @@ function localgov_examples_services_modules_installed($modules) {
   // is installed first and LocalGov Services later. It will also add the
   // additional fields needed for modules to work together without creating a
   // heard dependency.
-  $services = in_array('localgov_services_navigation', $modules);
+  $services = in_array('localgov_services_navigation', $modules, TRUE);
   if ($services) {
     // By calling optional configuration again the services entity reference
     // field is added. Pauthauto is also a dependency of Services so if that was
